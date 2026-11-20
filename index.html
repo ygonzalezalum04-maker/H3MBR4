@@ -2,389 +2,230 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>H3MBR4 | Coreografía Digital</title>
 
-<title>H3MBR4 | Coreografía Digital</title>
+  <script type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+  </script>
 
-<script type="module"
-src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
-</script>
+  <style>
+    * { box-sizing: border-box; }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+    body {
+      margin: 0;
+      background: #101010;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-html {
-  scroll-behavior: smooth;
-}
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 24px;
+    }
 
-body {
-  margin: 0;
-  background: #101010;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    h1 {
+      text-align: center;
+      font-size: clamp(64px, 14vw, 160px);
+      letter-spacing: -0.075em;
+      line-height: 1;
+      margin: 20px 0;
+    }
 
-main {
-  max-width: 1100px;
-  margin: auto;
-}
+    model-viewer {
+      width: 100%;
+      height: min(65vh, 650px);
+      min-height: 380px;
+      background: transparent;
+    }
 
-h1 {
-  text-align: center;
-  font-size: clamp(60px, 13vw, 140px);
-  font-weight: 900;
-  letter-spacing: -0.07em;
-  line-height: 1;
-  margin: 30px 0 10px;
-}
+    .ar-button {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: black;
+      border: 0;
+      border-radius: 40px;
+      padding: 14px 22px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+    }
 
-.viewer-container {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  min-height: 400px;
-}
+    .intro {
+      max-width: 850px;
+      margin: 40px auto;
+      font-size: 16px;
+      line-height: 1.8;
+    }
 
-model-viewer {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-}
+    .credits {
+      max-width: 850px;
+      margin: 50px auto;
+    }
 
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #aaa;
-  font-size: 14px;
-  pointer-events: none;
-}
+    h2 {
+      font-size: 28px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
 
-.loading.hidden {
-  display: none;
-}
+    .credit {
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
 
-.ar-button {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 40px;
-  padding: 16px 22px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  max-width: 95%;
-}
+    .credit strong {
+      display: block;
+      font-size: 14px;
+    }
 
-.subtitle {
-  text-align: center;
-  color: #999;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 15px 20px 55px;
-}
+    .credit span {
+      color: #ccc;
+      font-size: 14px;
+    }
 
-.description {
-  max-width: 690px;
-  margin: 0 auto 80px;
-  padding: 0 25px;
-}
+    .support {
+      max-width: 850px;
+      margin: 55px auto;
+      font-size: 14px;
+      line-height: 1.8;
+    }
 
-.description h2,
-.credits h2 {
-  font-size: 25px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #444;
-}
+    .support h2 { font-size: 20px; }
 
-.description p {
-  font-size: 18px;
-  line-height: 1.85;
-  color: #ddd;
-  margin: 0;
-}
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+      padding: 40px 0;
+    }
 
-.credits {
-  max-width: 690px;
-  margin: 0 auto;
-  padding: 0 25px;
-}
-
-.credit {
-  margin-bottom: 28px;
-}
-
-.credit strong {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  color: #999;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  margin-bottom: 8px;
-}
-
-.credit span {
-  display: block;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-.institutional {
-  max-width: 690px;
-  margin: 65px auto 0;
-  padding: 35px 25px 0;
-  border-top: 1px solid #444;
-}
-
-.institutional h2 {
-  font-size: 12px;
-  color: #999;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
-.institutional p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #ddd;
-  margin-bottom: 40px;
-}
-
-footer {
-  text-align: center;
-  color: #666;
-  font-size: 11px;
-  letter-spacing: 1px;
-  padding: 45px 20px 35px;
-}
-
-@media (max-width: 700px) {
-  .viewer-container {
-    height: 55vh;
-    min-height: 380px;
-  }
-
-  .description {
-    margin-bottom: 65px;
-  }
-
-  .description p {
-    font-size: 16px;
-    line-height: 1.8;
-  }
-
-  .credit span {
-    font-size: 16px;
-  }
-
-  .ar-button {
-    font-size: 11px;
-    padding: 15px 20px;
-  }
-}
-</style>
+    @media (max-width: 700px) {
+      main { padding: 16px; }
+      model-viewer { height: 55vh; }
+      .intro { font-size: 14px; }
+    }
+  </style>
 </head>
 
 <body>
 <main>
 
-<h1>H3MBR4</h1>
-
-<div class="viewer-container">
+  <h1>H3MBR4</h1>
 
   <model-viewer
     id="hembra"
     src="./H3MBR4.glb"
-    alt="Avatar coreográfico animado de H3MBR4"
+    ios-src="./Meshy_AI_Monochrome_T_Pose_20261115_animated_mixamo_Running.usdz"
+    alt="Bailarina de H3MBR4 corriendo"
     camera-controls
     autoplay
     animation-crossfade-duration="0"
     ar
-    ar-modes="webxr scene-viewer quick-look"
+    ar-modes="quick-look scene-viewer webxr"
     ar-placement="floor"
     shadow-intensity="0"
     exposure="1"
-    interaction-prompt="none">
+    loading="eager">
 
-    <button
-      class="ar-button"
-      slot="ar-button"
-      type="button">
+    <button class="ar-button" slot="ar-button">
       VER EN REALIDAD AUMENTADA
     </button>
 
   </model-viewer>
 
-  <div class="loading" id="loading">
-    Cargando H3MBR4... 0%
-  </div>
+  <section class="intro">
+    <p>
+      Coreografía experimental que explora el cuerpo como
+      herramienta de creación sonora, tomando el movimiento
+      y sus posibilidades acústicas como eje central.
+      A través de una investigación sobre la relación
+      entre cuerpo, máquina y sonido, la pieza propone
+      una experiencia en la que lo corporal se convierte
+      también en un territorio de resonancia y experimentación.
+    </p>
+  </section>
 
-</div>
+  <section class="credits">
+    <h2>Créditos</h2>
 
-<p class="subtitle">
-  Coreografía experimental · Cuerpo · Máquina · Sonido
-</p>
+    <div class="credit">
+      <strong>Concepto y dirección</strong>
+      <span>Yessica González, Fernanda Patricia Villarreal</span>
+    </div>
 
-<section class="description">
+    <div class="credit">
+      <strong>Investigación coreográfica y exploración corporal</strong>
+      <span>Yessica González, Fernanda Patricia Villarreal</span>
+    </div>
 
-  <h2>Sobre la obra</h2>
+    <div class="credit">
+      <strong>Producción</strong>
+      <span>Fernanda Patricia Villarreal</span>
+    </div>
 
-  <p>
-    Coreografía experimental que explora el cuerpo
-    como herramienta de creación sonora, tomando
-    el movimiento y sus posibilidades acústicas
-    como eje central. A través de una investigación
-    sobre la relación entre cuerpo, máquina y sonido,
-    la pieza propone una experiencia en la que lo
-    corporal se convierte también en un territorio
-    de resonancia y experimentación.
-  </p>
+    <div class="credit">
+      <strong>Interpretación</strong>
+      <span>Yessica González</span>
+    </div>
 
-</section>
+    <div class="credit">
+      <strong>Ejecución escénica</strong>
+      <span>
+        Yessica González, Fernanda Patricia Villarreal,
+        Rodrigo Zárate, Petra Synthetic
+      </span>
+    </div>
 
-<section class="credits">
+    <div class="credit">
+      <strong>Diseño y composición sonora</strong>
+      <span>Rodrigo Zárate</span>
+    </div>
 
-  <h2>Créditos</h2>
+    <div class="credit">
+      <strong>Experimentación tecnológica y dispositivos sonoros</strong>
+      <span>Petra Synthetic, Jeimy Gálvez, Gabriel Esparza</span>
+    </div>
 
-  <div class="credit">
-    <strong>Concepto y dirección</strong>
-    <span>
-      Yessica González,
-      Fernanda Patricia Villarreal
-    </span>
-  </div>
+    <div class="credit">
+      <strong>Laboratorio de Escucha Corporal</strong>
+      <span>
+        Yessica González, Fernanda Patricia Villarreal,
+        Rodrigo Zárate
+      </span>
+    </div>
 
-  <div class="credit">
-    <strong>
-      Investigación coreográfica y exploración corporal
-    </strong>
-    <span>
-      Yessica González,
-      Fernanda Patricia Villarreal
-    </span>
-  </div>
+    <div class="credit">
+      <strong>Diseño 3D</strong>
+      <span>Yessica González</span>
+    </div>
+  </section>
 
-  <div class="credit">
-    <strong>Producción</strong>
-    <span>Fernanda Patricia Villarreal</span>
-  </div>
+  <section class="support">
+    <h2>Proyecto apoyado por</h2>
+    <p>
+      Convocatoria Nacional de Danza 2026,
+      a través del Programa Plataforma de Danza Expandida
+      y Performance, Danza INBAL.
+    </p>
 
-  <div class="credit">
-    <strong>Interpretación</strong>
-    <span>Yessica González</span>
-  </div>
+    <h2>Agradecimientos especiales</h2>
+    <p>
+      Edificio Lolyta<br>
+      Galería Gotxikoa<br>
+      Fabrizio H. Pacheco
+    </p>
+  </section>
 
-  <div class="credit">
-    <strong>Ejecución escénica</strong>
-    <span>
-      Yessica González,
-      Fernanda Patricia Villarreal,
-      Rodrigo Zárate,
-      Petra Synthetic
-    </span>
-  </div>
-
-  <div class="credit">
-    <strong>Diseño y composición sonora</strong>
-    <span>Rodrigo Zárate</span>
-  </div>
-
-  <div class="credit">
-    <strong>
-      Experimentación tecnológica y dispositivos sonoros
-    </strong>
-    <span>
-      Petra Synthetic,
-      Jemy Gálvez,
-      Gabriel Esparza
-    </span>
-  </div>
-
-  <div class="credit">
-    <strong>Laboratorio de Escucha Corporal</strong>
-    <span>
-      Yessica González,
-      Fernanda Patricia Villarreal,
-      Rodrigo Zárate
-    </span>
-  </div>
-
-  <div class="credit">
-    <strong>Diseño 3D</strong>
-    <span>Yessica González</span>
-  </div>
-
-</section>
-
-<section class="institutional">
-
-  <h2>Apoyo institucional</h2>
-
-  <p>
-    Proyecto apoyado por la Convocatoria Nacional
-    de Danza 2026, a través del Programa Plataforma
-    de Danza Expandida y Performance, Danza INBAL.
-  </p>
-
-  <h2>Agradecimientos especiales</h2>
-
-  <p>
-    Edificio Lolyta y Galería Gotxikoa.
-  </p>
-
-</section>
-
-<footer>
-  H3MBR4 — COREOGRAFÍA DIGITAL
-</footer>
+  <footer>
+    H3MBR4 — Coreografía Digital
+  </footer>
 
 </main>
-
-<script>
-const viewer = document.getElementById("hembra");
-const loading = document.getElementById("loading");
-
-viewer.addEventListener("progress", (event) => {
-  const progress = Math.round(
-    event.detail.totalProgress * 100
-  );
-
-  loading.textContent =
-    "Cargando H3MBR4... " + progress + "%";
-});
-
-viewer.addEventListener("load", () => {
-  loading.classList.add("hidden");
-
-  const animations = viewer.availableAnimations || [];
-
-  if (animations.length > 0) {
-    viewer.animationName = animations[0];
-    viewer.play();
-  }
-});
-
-viewer.addEventListener("error", () => {
-  loading.classList.add("hidden");
-  loading.textContent = "Error al cargar el modelo 3D.";
-  loading.classList.remove("hidden");
-});
-</script>
-
 </body>
 </html>
