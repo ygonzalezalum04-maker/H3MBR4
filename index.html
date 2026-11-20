@@ -34,6 +34,10 @@
       margin: 20px 0;
     }
 
+    .viewer-container {
+      position: relative;
+    }
+
     model-viewer {
       width: 100%;
       height: min(65vh, 650px);
@@ -42,18 +46,19 @@
     }
 
     .ar-button {
-      position: absolute;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
+      display: block;
+      width: fit-content;
+      margin: 15px auto 0;
       background: white;
       color: black;
       border: 0;
       border-radius: 40px;
-      padding: 14px 22px;
+      padding: 15px 25px;
+      font-size: 13px;
       font-weight: bold;
+      text-decoration: none;
+      text-align: center;
       cursor: pointer;
-      white-space: nowrap;
     }
 
     .intro {
@@ -96,7 +101,9 @@
       line-height: 1.8;
     }
 
-    .support h2 { font-size: 20px; }
+    .support h2 {
+      font-size: 20px;
+    }
 
     footer {
       text-align: center;
@@ -118,26 +125,31 @@
 
   <h1>H3MBR4</h1>
 
-  <model-viewer
-    id="hembra"
-    src="./H3MBR4.glb"
-    ios-src="./Meshy_AI_Monochrome_T_Pose_20261115_animated_mixamo_Running.usdz"
-    alt="Bailarina de H3MBR4 corriendo"
-    camera-controls
-    autoplay
-    animation-crossfade-duration="0"
-    ar
-    ar-modes="quick-look scene-viewer webxr"
-    ar-placement="floor"
-    shadow-intensity="0"
-    exposure="1"
-    loading="eager">
+  <div class="viewer-container">
+    <model-viewer
+      id="hembra"
+      src="./H3MBR4.glb"
+      alt="Bailarina de H3MBR4 corriendo"
+      camera-controls
+      autoplay
+      animation-crossfade-duration="0"
+      shadow-intensity="0"
+      exposure="1"
+      loading="eager">
+    </model-viewer>
+  </div>
 
-    <button class="ar-button" slot="ar-button">
-      VER EN REALIDAD AUMENTADA
-    </button>
-
-  </model-viewer>
+  <a
+    class="ar-button"
+    rel="ar"
+    href="./Meshy_AI_Monochrome_T_Pose_20261115_animated_mixamo_Running.usdz">
+    <img
+      alt=""
+      src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+      width="1"
+      height="1">
+    VER EN REALIDAD AUMENTADA
+  </a>
 
   <section class="intro">
     <p>
