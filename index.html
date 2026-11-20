@@ -2,95 +2,216 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <title>H3MBR4 | Experiencia AR</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script type="module"
-    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
-  </script>
+<title>H3MBR4 | Coreografía Digital</title>
 
-  <style>
-    * { box-sizing: border-box; }
+<script type="module"
+src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+</script>
 
-    body {
-      margin: 0;
-      background: #101010;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    main {
-      width: 100%;
-      height: 100dvh;
-      display: flex;
-      flex-direction: column;
-    }
+body {
+  margin: 0;
+  background: #101010;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    h1 {
-      text-align: center;
-      font-size: clamp(48px, 13vw, 100px);
-      margin: 20px 0 0;
-      letter-spacing: -3px;
-    }
+main {
+  max-width: 1400px;
+  min-height: 100dvh;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
-    model-viewer {
-      width: 100%;
-      flex: 1;
-      min-height: 300px;
-      background: transparent;
-    }
+h1 {
+  font-size: clamp(65px, 13vw, 170px);
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+  text-align: center;
+  margin: 0 0 20px;
+}
 
-    .ar-button {
-      background: white;
-      color: black;
-      border: none;
-      border-radius: 30px;
-      padding: 15px 24px;
-      font-weight: bold;
-      font-size: 15px;
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.content {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 25px;
+  flex: 1;
+  min-height: 500px;
+}
 
-    footer {
-      text-align: center;
-      font-size: 12px;
-      padding: 12px;
-      color: #aaa;
-    }
-  </style>
+.viewer {
+  position: relative;
+  min-height: 480px;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  background: transparent;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 15px;
+}
+
+.credit {
+  margin-bottom: 15px;
+}
+
+.credit strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.credit span {
+  display: block;
+  color: #ddd;
+}
+
+.ar-button {
+  background: white;
+  color: black;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+  padding: 20px 0;
+}
+
+@media (max-width: 700px) {
+  main {
+    padding: 15px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .viewer,
+  model-viewer {
+    min-height: 420px;
+    height: 55vh;
+  }
+
+  .credits {
+    font-size: 12px;
+    padding: 15px 5px;
+  }
+
+  h1 {
+    font-size: clamp(55px, 15vw, 95px);
+  }
+}
+</style>
 </head>
 
 <body>
-  <main>
-    <h1>H3MBR4</h1>
+<main>
+
+<h1>H3MBR4</h1>
+
+<div class="content">
+
+  <div class="viewer">
 
     <model-viewer
       src="./H3MBR4.glb"
-      alt="Avatar animado de H3MBR4"
+      alt="Avatar de H3MBR4 corriendo"
       camera-controls
-      auto-rotate
       autoplay
       animation-crossfade-duration="0"
       shadow-intensity="0"
+      exposure="1"
       ar
       ar-modes="webxr scene-viewer quick-look"
       ar-placement="floor">
 
-      <button class="ar-button"
-              slot="ar-button">
+      <button
+        class="ar-button"
+        slot="ar-button">
         VER EN REALIDAD AUMENTADA
       </button>
 
     </model-viewer>
 
-    <footer>
-      H3MBR4 — Experiencia coreográfica digital
-    </footer>
-  </main>
+  </div>
+
+  <section class="credits">
+
+    <div class="credit">
+      <strong>Concepto y dirección</strong>
+      <span>Yessica González, Fernanda Patricia Villarreal</span>
+    </div>
+
+    <div class="credit">
+      <strong>Investigación coreográfica y exploración corporal</strong>
+      <span>Yessica González, Fernanda Patricia Villarreal</span>
+    </div>
+
+    <div class="credit">
+      <strong>Producción</strong>
+      <span>Fernanda Patricia Villarreal</span>
+    </div>
+
+    <div class="credit">
+      <strong>Interpretación</strong>
+      <span>Yessica González</span>
+    </div>
+
+    <div class="credit">
+      <strong>Ejecución escénica</strong>
+      <span>Yessica González, Fernanda Patricia Villarreal, Rodrigo Zárate, Petra Synthetic</span>
+    </div>
+
+    <div class="credit">
+      <strong>Diseño y composición sonora</strong>
+      <span>Rodrigo Zárate</span>
+    </div>
+
+    <div class="credit">
+      <strong>Experimentación tecnológica y dispositivos sonoros</strong>
+      <span>Petra Synthetic, Jeimy Gálvez, Gabriel Esparza</span>
+    </div>
+
+    <div class="credit">
+      <strong>Laboratorio de Escucha Corporal</strong>
+      <span>Yessica González, Fernanda Patricia Villarreal, Rodrigo Zárate</span>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+H3MBR4 — Coreografía Digital
+</footer>
+
+</main>
 </body>
 </html>
