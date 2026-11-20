@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>H3MBR4 | Experiencia AR</title>
+
+  <script type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #101010;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      width: 100%;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(48px, 13vw, 100px);
+      margin: 20px 0 0;
+      letter-spacing: -3px;
+    }
+
+    model-viewer {
+      width: 100%;
+      flex: 1;
+      min-height: 300px;
+      background: transparent;
+    }
+
+    .ar-button {
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 30px;
+      padding: 15px 24px;
+      font-weight: bold;
+      font-size: 15px;
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      padding: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>H3MBR4</h1>
+
+    <model-viewer
+      src="./H3MBR4.glb"
+      alt="Avatar animado de H3MBR4"
+      camera-controls
+      auto-rotate
+      autoplay
+      animation-crossfade-duration="0"
+      shadow-intensity="0"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      ar-placement="floor">
+
+      <button class="ar-button"
+              slot="ar-button">
+        VER EN REALIDAD AUMENTADA
+      </button>
+
+    </model-viewer>
+
+    <footer>
+      H3MBR4 — Experiencia coreográfica digital
+    </footer>
+  </main>
+</body>
+</html>
