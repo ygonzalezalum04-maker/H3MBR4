@@ -45,6 +45,19 @@
       background: transparent;
     }
 
+    .loading-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      pointer-events: none;
+    }
+
     .ar-button {
       display: block;
       width: fit-content;
@@ -136,8 +149,32 @@
       shadow-intensity="0"
       exposure="1"
       loading="eager">
+
+      <div
+        id="loading-indicator"
+        class="loading-indicator"
+        slot="progress-bar"
+        role="status"
+        aria-live="polite">
+        CARGANDO MODELO 3D... 0%
+      </div>
+
     </model-viewer>
   </div>
+
+  <script>
+    const viewer = document.querySelector('#hembra');
+    const indicator = document.querySelector('#loading-indicator');
+
+    viewer.addEventListener('progress', (event) => {
+      const percent = Math.round(event.detail.totalProgress * 100);
+      indicator.textContent = `CARGANDO MODELO 3D... ${percent}%`;
+    });
+
+    viewer.addEventListener('load', () => {
+      indicator.style.display = 'none';
+    });
+  </script>
 
   <a
     class="ar-button"
@@ -210,6 +247,11 @@
         Yessica González, Fernanda Patricia Villarreal,
         Rodrigo Zárate
       </span>
+    </div>
+
+    <div class="credit">
+      <strong>Diseño de Producción</strong>
+      <span>Malcom Vargas, Fernanda Patricia Villarreal</span>
     </div>
 
     <div class="credit">
